@@ -41,5 +41,5 @@ if text != "":
     klasse, proba = predict_comment(text)
     st.write(f"Der Kommentar '{text}' ist **{'toxisch' if klasse==1 else 'nicht toxisch'}** mit der Wahrscheinlichkeit von **{proba}%**")
 
-st.write("Unter folgendem Link kann man das ganze Projekt auf GitHub anschauen")
-st.link("https://github.com/nataliaheine/toxic_comments", "LINK")
+st.write("Unter folgendem Link kann man das ganze Projekt auf GitHub anschauen:")
+st.write('<a href="https://github.com/nataliaheine/toxic_comments">LINK</a>', unsafe_allow_html=True)

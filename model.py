@@ -24,6 +24,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 # MODELLS
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
+
+# SPEICHERN DES MODELLS
+from joblib import dump
 #--------------------------------------------------------------------------------------------------------------------
 
 # DATEN LESEN UND VORBEREITEN
@@ -48,12 +51,4 @@ model_pipeline = Pipeline([
     ("model", LogisticRegression(class_weight={0: 1, 1: 3}))
 ])
 model_pipeline.fit(df["comment_text"], df["label"])
-
-# PREDICT COMMENT FUNKTION
-def predict_comment(text):
-    klasse = model_pipeline.predict([text])
-    proba = model_pipeline.predict_proba([text])
-    if klasse == 1:
-        return klasse, round(proba[0][1]*100, 2)
-    else:
-        return klasse, round(proba[0][0]*100, 2)
+dump(model_pipeline, 'model_toxic_comments.joblib')

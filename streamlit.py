@@ -40,3 +40,6 @@ text = st.text_input("Schreibe hier den Kommentartext")
 if text != "":
     klasse, proba = predict_comment(text)
     st.write(f"Der Kommentar '{text}' ist **{'toxisch' if klasse==1 else 'nicht toxisch'}** mit der Wahrscheinlichkeit von **{proba}%**")
+
+st.write("Unter folgendem Link kann man das ganze Projekt auf GitHub anschauen")
+st.link("https://github.com/nataliaheine/toxic_comments", "LINK")

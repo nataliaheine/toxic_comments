@@ -11,6 +11,7 @@ from nltk.corpus import stopwords
 import string
 from nltk.stem import SnowballStemmer
 
+# TOKENIZE FUNKTION
 stop_words = stopwords.words("german")
 
 def tokenized_and_stemmed(text):
@@ -21,6 +22,7 @@ def tokenized_and_stemmed(text):
     stemmed_tokens = [stemmer.stem(i) for i in tokens_without_punctuation_and_stopwords]
     return stemmed_tokens
 
+# OPEN SAVED MODEL
 with open('model_toxic_comments.pkl', 'rb') as file:
     model_pipeline = pickle.load(file)
 
@@ -34,12 +36,10 @@ def predict_comment(text):
         return klasse, round(proba[0][0]*100, 2)
     
 st.title("Toxic comments")
+st.markdown("Unter folgendem Link kann man das ganze Projekt auf GitHub anschauen: [LINK](https://github.com/nataliaheine/toxic_comments)")
 st.write(f"Du kannst einen Kommentar nach Toxizität überprüfen")
 text = st.text_input("Schreibe hier den Kommentartext")
 
 if text != "":
     klasse, proba = predict_comment(text)
     st.write(f"Der Kommentar '{text}' ist **{'toxisch' if klasse==1 else 'nicht toxisch'}** mit der Wahrscheinlichkeit von **{proba}%**")
-
-st.write("Unter folgendem Link kann man das ganze Projekt auf GitHub anschauen:")
-st.write('<a href="https://github.com/nataliaheine/toxic_comments">LINK</a>', unsafe_allow_html=True)

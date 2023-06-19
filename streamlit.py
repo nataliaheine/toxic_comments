@@ -1,7 +1,28 @@
 import streamlit as st
-from joblib import load
+import pickle
+import nltk
 
-model_pipeline = load('model_toxic_comments.joblib') 
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('omw-1.4')
+
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+import string
+from nltk.stem import SnowballStemmer
+
+stop_words = stopwords.words("german")
+
+def tokenized_and_stemmed(text):
+    stemmer = SnowballStemmer(language="german")
+    tokens = word_tokenize(text, language="german")
+    tokens_without_punctuation = [i for i in tokens if i not in string.punctuation]
+    tokens_without_punctuation_and_stopwords = [i for i in tokens_without_punctuation if i not in stop_words]
+    stemmed_tokens = [stemmer.stem(i) for i in tokens_without_punctuation_and_stopwords]
+    return stemmed_tokens
+
+with open('model_toxic_comments.pkl', 'rb') as file:
+    model_pipeline = pickle.load(file)
 
 # PREDICT COMMENT FUNKTION
 def predict_comment(text):
@@ -17,5 +38,5 @@ st.write(f"Du kannst einen Kommentar nach Toxizität überprüfen")
 text = st.text_input("Schreibe hier den Kommentartext")
 
 if text != "":
-    klasse, proba = model.predict_comment(text)
+    klasse, proba = predict_comment(text)
     st.write(f"Der Kommentar '{text}' ist **{'toxisch' if klasse==1 else 'nicht toxisch'}** mit der Wahrscheinlichkeit von **{proba}%**")

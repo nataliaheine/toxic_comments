@@ -1,5 +1,6 @@
 # toxic_comments
-My final project for the data science course where I created a model that aims to detect toxic comments. 
+My final project for the data science course where I created a model that aims to detect toxic comments.
+Link to the visualisation: https://toxic-comments.streamlit.app/
 
 > toxic_comments_de_unprocessed.csv -- Dataset
 > 

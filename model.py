@@ -36,8 +36,6 @@ def start():
         model_pipeline = pickle.load(file)
     
     st.title("Toxic comments")
-    st.markdown("Unter folgendem Link kann man das ganze Projekt auf GitHub anschauen: [LINK](https://github.com/nataliaheine/toxic_comments)")
-    st.write(f"Du kannst einen Kommentar nach Toxizität überprüfen")
     text = st.text_input("Schreibe hier den Kommentartext")
     
     if text != "":

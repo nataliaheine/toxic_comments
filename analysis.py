@@ -3,6 +3,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import nltk
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+import string
+
 def start():
     st.title("Datenanalyse & Modellauswahl")
     st.info("Dataset findet man unter folgendem [Link](https://www.kaggle.com/datasets/shubheshswain/jigsaw-toxic-comment-classification-german).")

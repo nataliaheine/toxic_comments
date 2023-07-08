@@ -205,16 +205,18 @@ def start():
 
     st.write("Weil mir Recall für Klasse 1 (toxisch) wichtiger ist als Recall für Klasse 0, entscheide ich mich für die folgenden Gewichte: 0:1, 1:3.")
 
-    st.write("Für **SupportVectorMachine** suche ich die besten 'C' und 'gamma' mit Hilfe von GridSearch und die Besten Parameter: **{'C': 10, 'gamma': 0.01}**")
+    st.write("Für **SupportVectorMachine** suche ich die besten 'C' und 'gamma' mit Hilfe von GridSearch und die Besten Parameter sind: **{'C': 10, 'gamma': 0.01}**")
 
     st.write("Für **Random Forest** suche ich mit Ellenbogenmethode die besten Anzahl und Tiefe der Bäume")
+    
     mae_scores = [0.44, 0.47, 0.42, 0.32, 0.37, 0.36, 0.4, 0.41, 0.4, 0.38, 0.4, 0.41, 0.42, 0.4, 0.42, 0.43, 0.43, 0.43, 0.42, 0.41, 0.43, 0.44, 0.44, 0.44, 0.43, 0.44, 0.44, 0.44, 0.43, 0.44, 0.43, 0.44, 0.43]
     n_estimators_range = range(1, 100, 3)
+    
     plt.plot(n_estimators_range, mae_scores)
     plt.xlabel('Zahl der Bäume')
     plt.ylabel('Anzahl der Fehler')
     plt.title('RandomForest - Optimale Zahl der Bäume')
-    plt.show()
+    st.pyplot(plt)
 
     
     '''

@@ -7,13 +7,14 @@ import seaborn as sns
 df = pd.read_csv("toxic_comments_de_unprocessed.csv")
 
 def start():
-    st.title("Datenanalyse")
+    st.title("Datenanalyse & Modellauswahl")
 
 
-    st.info("In diesem Projekt wurden die Daten von der Webseite 'AutoScout24' analysiert.  \n\nDas Dataset findet man unter folgendem [Link](https://www.kaggle.com/datasets/ander289386/cars-germany).")
+    st.info("Dataset findet man unter folgendem [Link](https://www.kaggle.com/datasets/shubheshswain/jigsaw-toxic-comment-classification-german).")
 
 
-    st.header("Wie viele Autos wurden verkauft?  Über welchen Zeitraum?  Welche Marken sind erfasst?")
+    st.header("So sehen die ursprunglichen Daten aus:")
+    st.dataframe(df)
     
     '''
     fig, ax = plt.subplots()

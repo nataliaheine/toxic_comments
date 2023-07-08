@@ -35,11 +35,11 @@ def start():
     st.write(example, "  \n")
     
     tokens = word_tokenize(example, language="german")
-    st.write("** Einzelne Tokens:**")
+    st.write("**Einzelne Tokens:**")
     st.write(', '.join(tokens))
     
     tokens_without_punctuation = [i for i in tokens if i not in string.punctuation]
-    st.write("--------------Tokens ohne Interpunktion-------------------\n")
+    st.write("**Tokens ohne Interpunktion:**")
     st.write(', '.join(tokens_without_punctuation))
     
     stop_words = stopwords.words("german")

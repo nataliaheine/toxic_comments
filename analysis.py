@@ -87,7 +87,7 @@ def start():
         return lemmatized_tokes
     
     st.write("**Mit NLTK Lemmatized Tokens:**")
-    st.write(*', '.join(tokenized_and_lemmatized(example))*)
+    st.info(', '.join(tokenized_and_lemmatized(example)))
 
     st.write("Außer NLTK-Bibliothek, habe ich Spacy-Bibliothek gefunden.")
 
@@ -102,7 +102,7 @@ def start():
         return lemmas
 
     st.write("**Mit Spacy Lemmatized Tokens:**")
-    st.write(', '.join(['möglicherweise', 'rechtfertigen', 'Umleitung', 'Element', 'existieren', 'fiktiv', 'Element', 'müssen', 'Leute', 'nachgeben', 'neu', 'Element', 'erfinden', 'krumm', 'befinden', '20:53', '24.', 'November', '2004', 'UTC']))
+    st.info(', '.join(['möglicherweise', 'rechtfertigen', 'Umleitung', 'Element', 'existieren', 'fiktiv', 'Element', 'müssen', 'Leute', 'nachgeben', 'neu', 'Element', 'erfinden', 'krumm', 'befinden', '20:53', '24.', 'November', '2004', 'UTC']))
 
 
 

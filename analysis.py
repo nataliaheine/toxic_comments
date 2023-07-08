@@ -35,19 +35,19 @@ def start():
     
     tokens = word_tokenize(example, language="german")
     st.write("--------------Einzelne Tokens aus dem Example-------------------\n")
-    st.write(tokens, format='plain', "  \n")
+    st.write(tokens, "  \n", format='plain')
     
     tokens_without_punctuation = [i for i in tokens if i not in string.punctuation]
     st.write("--------------Tokens ohne Interpunktion-------------------\n")
-    st.write(tokens_without_punctuation, format='plain', "\n")
+    st.write(tokens_without_punctuation, "  \n", format='plain')
     
     stop_words = stopwords.words("german")
     st.write("--------------Deutsche Stopwords der NLTK-Bibliothek-------------------\n")
-    st.write(stop_words, format='plain', "\n")
+    st.write(stop_words, "  \n", format='plain')
     
     tokens_without_punctuation_and_stopwords = [i for i in tokens_without_punctuation if i not in stop_words]
     st.write("--------------Tokens ohne Interpunktion und Stopwords-------------------\n")
-    st.write(tokens_without_punctuation_and_stopwords, format='plain')
+    st.write(tokens_without_punctuation_and_stopwords, "  \n", format='plain')
     
     '''
     fig, ax = plt.subplots()

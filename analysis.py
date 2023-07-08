@@ -114,16 +114,16 @@ def start():
     st.write("**Classification Report für CountVectorizer:**")
     clas_report_count = {'precision': {'0': 0.847913616398243,
                                        '1': 0.9104046242774566,
-                                       'accuracy': Nan},
+                                       'accuracy': ""},
                          'recall': {'0': 0.9199761715647339,
                                     '1': 0.8313032886723508,
-                                    'accuracy': Nan},
+                                    'accuracy': ""},
                          'f1-score': {'0': 0.8824761904761905,
                                       '1': 0.8690577249575552,
                                       'accuracy': 0.8761292913069665},
                          'support': {'0': 5036.0, 
                                      '1': 4926.0, 
-                                     'accuracy': Nan}}
+                                     'accuracy': ""}}
     
     df_vec_count = pd.DataFrame(clas_report_count)
     st.dataframe(df_vec_count)

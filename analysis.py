@@ -29,22 +29,26 @@ def start():
 
     st.header("Tokenizing")
     st.write("Auf einem Beispiel zeige ich euch, wie Tokeniting funktioniert")
+    
     example = df.iloc[1]["comment_text"]
     st.write("**Example:**\n")
     st.write(example, "  \n")
     
     tokens = word_tokenize(example, language="german")
+    st.write("** Einzelne Tokens:**")
+    st.write(', '.join(tokens))
+    
     tokens_without_punctuation = [i for i in tokens if i not in string.punctuation]
     st.write("--------------Tokens ohne Interpunktion-------------------\n")
     st.write(', '.join(tokens_without_punctuation))
     
     stop_words = stopwords.words("german")
-    st.write("--------------Deutsche Stopwords der NLTK-Bibliothek-------------------\n")
-    st.write(stop_words, "  \n", format='plain')
+    st.write("**Deutsche Stopwords der NLTK-Bibliothek:**")
+    st.write(', '.join(stop_words))
     
     tokens_without_punctuation_and_stopwords = [i for i in tokens_without_punctuation if i not in stop_words]
-    st.write("--------------Tokens ohne Interpunktion und Stopwords-------------------\n")
-    st.write(tokens_without_punctuation_and_stopwords, "  \n", format='plain')
+    st.write("**Tokens ohne Interpunktion und Stopwords:**")
+    st.write(', '.join(tokens_without_punctuation_and_stopwords))
     
     '''
     fig, ax = plt.subplots()

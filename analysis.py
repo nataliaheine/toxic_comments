@@ -122,7 +122,9 @@ def start():
                           '1': 0.8690577249575552,
                           'accuracy': 0.8761292913069665},
                          'support': {'0': 5036.0, '1': 4926.0, 'accuracy': 0.8761292913069665}}
-
+    
+    df = pd.DataFrame(clas_report)
+    st.dataframe(df)
 
 
 

@@ -73,7 +73,7 @@ def start():
         return stemmed_tokens
         
     st.write("**Stemmed Tokens:**")
-    st.write(', '.join(tokenized_and_stemmed(example)))
+    st.info(', '.join(tokenized_and_stemmed(example)))
 
     st.write("Weil mir das Ergebnis nicht sehr gefallen hat, habe ich weiter recherchiert und herausgefunden, dass Lemmatazing-Methode für die deutsche Sprache besser funktionieren sollte.")
     st.write("Lemmatizing-Methode sucht nach dem Wort in einem bestimmten Wörterbuch, in dem gleich steht, zu welcher Stammform dieses Wort gebracht werden soll.")
@@ -87,7 +87,7 @@ def start():
         return lemmatized_tokes
     
     st.write("**Mit NLTK Lemmatized Tokens:**")
-    st.write(', '.join(tokenized_and_lemmatized(example)))
+    st.write(*', '.join(tokenized_and_lemmatized(example))*)
 
     st.write("Außer NLTK-Bibliothek, habe ich Spacy-Bibliothek gefunden.")
 

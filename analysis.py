@@ -15,7 +15,10 @@ from nltk.stem import WordNetLemmatizer
 nltk.download('omw') # Das deutsche Wörterbuch "GermaLemma"
 nltk.download('wordnet')
 nltk.download('omw-1.4')
-import spacy 
+import spacy
+import subprocess
+# Befehl ausführen, um das Modell herunterzuladen
+subprocess.run(["python", "-m", "spacy", "download", "de_core_news_sm"])
 
 def start():
     st.title("Datenanalyse & Modellauswahl")

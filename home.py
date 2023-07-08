@@ -5,6 +5,8 @@ import model
 import info
 import analysis
 
+from model import tokenized_and_stemmed
+
 pages = {
     "1. Info": info,
     "2. Datenanalyse & Modellauswahl": analysis,

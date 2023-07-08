@@ -10,6 +10,13 @@ from nltk.corpus import stopwords
 nltk.download('stopwords')
 import string
 
+from nltk.stem import SnowballStemmer
+from nltk.stem import WordNetLemmatizer
+nltk.download('omw') # Das deutsche Wörterbuch "GermaLemma"
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+import spacy 
+
 def start():
     st.title("Datenanalyse & Modellauswahl")
     st.info("Dataset findet man unter folgendem [Link](https://www.kaggle.com/datasets/shubheshswain/jigsaw-toxic-comment-classification-german).")

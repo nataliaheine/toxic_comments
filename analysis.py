@@ -147,7 +147,74 @@ def start():
 
     st.write("Für meine Aufgabe ist Recall für Klasse 1 (toxisch) entscheidend und CountVectorizer zeigt bessere Ergebnisse, deswegen habe ich weiter ihn benutzt.")
 
+    st.header("Modelle")
+    st.info("**LogisticRegression, NaiveBayes, RandomForest, GradienBoosting und SVM**")
+    st.write("Zuerst muss ich die besten Parameter für jedes Modell finden.")
+    st.write("Für **Logistic Regression** suche ich die besten Gewichte der Klassen")
 
+    st.write("**Gewicht: {0: 1, 1: 1}:**")
+    clas_report = {'precision': {'0': 0.86,
+                                       '1': 0.91,
+                                       'accuracy': ""},
+                         'recall': {'0': 0.92,
+                                    '1': 0.85,
+                                    'accuracy': ""},
+                         'f1-score': {'0': 0.89,
+                                      '1': 0.88,
+                                      'accuracy': 0.88},
+                         'support': {'0': 5036, 
+                                     '1': 4926,
+                                     'accuracy': ""}}
+    
+    df_cr = pd.DataFrame(clas_report)
+    st.dataframe(df_cr)
+
+    st.write("**Gewicht: {0: 1, 1: 3}:**")
+    clas_report = {'precision': {'0': 0.89,
+                                 '1': 0.86,
+                                 'accuracy': ""},
+                   'recall': {'0': 0.85,
+                              '1': 0.90,
+                              'accuracy': ""},
+                   'f1-score': {'0': 0.87,
+                                '1': 0.88,
+                                'accuracy': 0.87},
+                   'support': {'0': 5036, 
+                               '1': 4926,
+                               'accuracy': ""}}
+    
+    df_cr = pd.DataFrame(clas_report)
+    st.dataframe(df_cr)
+
+    st.write("**Gewicht: {0: 1, 1: 5}:**")
+    clas_report = {'precision': {'0': 0.91,
+                                 '1': 0.83,
+                                 'accuracy': ""},
+                   'recall': {'0': 0.82,
+                              '1': 0.91,
+                              'accuracy': ""},
+                   'f1-score': {'0': 0.86,
+                                '1': 0.87,
+                                'accuracy': 0.87},
+                   'support': {'0': 5036, 
+                               '1': 4926,
+                               'accuracy': ""}}
+    
+    df_cr = pd.DataFrame(clas_report)
+    st.dataframe(df_cr)
+
+    st.write("Weil mir Recall für Klasse 1 (toxisch) wichtiger ist als Recall für Klasse 0, entscheide ich mich für die folgenden Gewichte: 0:1, 1:3.")
+
+    st.write("Für **SupportVectorMachine** suche ich die besten 'C' und 'gamma' mit Hilfe von GridSearch und die Besten Parameter: **{'C': 10, 'gamma': 0.01}**")
+
+    st.write("Für **Random Forest** suche ich mit Ellenbogenmethode die besten Anzahl und Tiefe der Bäume")
+    mae_scores = [0.44, 0.47, 0.42, 0.32, 0.37, 0.36, 0.4, 0.41, 0.4, 0.38, 0.4, 0.41, 0.42, 0.4, 0.42, 0.43, 0.43, 0.43, 0.42, 0.41, 0.43, 0.44, 0.44, 0.44, 0.43, 0.44, 0.44, 0.44, 0.43, 0.44, 0.43, 0.44, 0.43]
+    n_estimators_range = range(1, 100, 3)
+    plt.plot(n_estimators_range, mae_scores)
+    plt.xlabel('Zahl der Bäume')
+    plt.ylabel('Anzahl der Fehler')
+    plt.title('RandomForest - Optimale Zahl der Bäume')
+    plt.show()
 
     
     '''

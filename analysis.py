@@ -111,22 +111,41 @@ def start():
     st.write("Ich habe zwei Vectoriser aus der Sklearn-Bibliothek: ausprobiert und die Ergebnisse miteinander vergliechen.")
     st.write("Der CountVectorizer berücksichtigt nur die Häufigkeit der Wörter in einem Dokument und nicht ihre Bedeutung. Der TfidfVectorizer berücksichtigt sowohl die Häufigkeit der Wörter in einem Dokument als auch ihre Seltenheit im gesamten Korpus. Wörter, die in vielen Dokumenten vorkommen, erhalten ein niedrigeres Gewicht, während seltenere Wörter ein höheres Gewicht erhalten. Der TfidfVectorizer eignet sich besonders gut für Textklassifikationsaufgaben, da er es ermöglicht, Wörter zu identifizieren, die ein Dokument am besten charakterisieren und eine Unterscheidung zwischen relevanten und nicht relevanten Wörtern zu treffen.")
 
-    st.write("**Classification Report für CountVectorizer:**")
-    clas_report_count = {'precision': {'0': 0.847913616398243,
-                                       '1': 0.9104046242774566,
+    st.write("**Classification Report für TfidfVectorizer:**")
+    clas_report_tfidf = {'precision': {'0': 0.85,
+                                       '1': 0.91,
                                        'accuracy': ""},
-                         'recall': {'0': 0.9199761715647339,
-                                    '1': 0.8313032886723508,
+                         'recall': {'0': 0.92,
+                                    '1': 0.83,
                                     'accuracy': ""},
-                         'f1-score': {'0': 0.8824761904761905,
-                                      '1': 0.8690577249575552,
-                                      'accuracy': 0.8761292913069665},
-                         'support': {'0': 5036.0, 
-                                     '1': 4926.0, 
+                         'f1-score': {'0': 0.88,
+                                      '1': 0.87,
+                                      'accuracy': 0.88},
+                         'support': {'0': 5036, 
+                                     '1': 4926, 
+                                     'accuracy': ""}}
+    
+    df_vec_tfidf = pd.DataFrame(clas_report_tfidf)
+    st.dataframe(df_vec_tfidf)
+
+    st.write("**Classification Report für CountVectorizer:**")
+    clas_report_count = {'precision': {'0': 0.86,
+                                       '1': 0.91,
+                                       'accuracy': ""},
+                         'recall': {'0': 0.92,
+                                    '1': 0.85,
+                                    'accuracy': ""},
+                         'f1-score': {'0': 0.89,
+                                      '1': 0.88,
+                                      'accuracy': 0.88},
+                         'support': {'0': 5036, 
+                                     '1': 4926,
                                      'accuracy': ""}}
     
     df_vec_count = pd.DataFrame(clas_report_count)
     st.dataframe(df_vec_count)
+
+    st.write("Für meine Aufgabe ist Recall für Klasse 1 (toxisch) entscheidend und CountVectorizer zeigt bessere Ergebnisse, deswegen habe ich weiter ihn benutzt.")
 
 
 

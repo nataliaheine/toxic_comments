@@ -9,8 +9,8 @@ from model import tokenized_and_stemmed
 
 pages = {
     "1. Info": info,
-    "2. Datenanalyse & Modellauswahl": analysis
-   
+    "2. Datenanalyse & Modellauswahl": analysis,
+    "3. Modell": model
 }
 
 st.sidebar.title("Seitenmenü")

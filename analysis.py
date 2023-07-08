@@ -123,8 +123,8 @@ def start():
                           'accuracy': 0.8761292913069665},
                          'support': {'0': 5036.0, '1': 4926.0, 'accuracy': 0.8761292913069665}}
     
-    df = pd.DataFrame(clas_report)
-    st.dataframe(df)
+    df_vec_count = pd.DataFrame(clas_report_count)
+    st.dataframe(df_vec_count)
 
 
 

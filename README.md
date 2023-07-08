@@ -9,4 +9,4 @@ Link to the visualisation: https://toxic-comments.streamlit.app/
 > 
 > model_toxic_comments.pkl -- File with saved model
 > 
-> streamlit.py -- File with code for the visualisation on Streamlit
+> home.py, info.py, analysis.py, model.py -- Files with code for the visualisation on Streamlit

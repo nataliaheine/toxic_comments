@@ -35,7 +35,7 @@ def start():
     
     tokens = word_tokenize(example, language="german")
     st.write("--------------Einzelne Tokens aus dem Example-------------------\n")
-    st.write(tokens, "  \n", format='plain')
+    st.write(tokens, format='plain')
     
     tokens_without_punctuation = [i for i in tokens if i not in string.punctuation]
     st.write("--------------Tokens ohne Interpunktion-------------------\n")

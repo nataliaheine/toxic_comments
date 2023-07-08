@@ -10,6 +10,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import string
 from nltk.stem import SnowballStemmer
+
 # TOKENIZE FUNKTION
 stop_words = stopwords.words("german")
 
@@ -21,12 +22,13 @@ def tokenized_and_stemmed(text):
     stemmed_tokens = [stemmer.stem(i) for i in tokens_without_punctuation_and_stopwords]
     return stemmed_tokens
 
-# OPEN SAVED MODEL
-with open('model_toxic_comments.pkl', 'rb') as file:
-    model_pipeline = pickle.load(file)
-
 # PREDICT COMMENT FUNKTION
 def predict_comment(text):
+    
+    # OPER SAVED MODEL
+    with open('model_toxic_comments.pkl', 'rb') as file:
+    model_pipeline = pickle.load(file)
+    
     klasse = model_pipeline.predict([text])
     proba = model_pipeline.predict_proba([text])
     if klasse == 1:

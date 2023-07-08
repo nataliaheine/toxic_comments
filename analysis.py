@@ -14,7 +14,7 @@ def start():
 
 
     st.header("So sehen die ursprunglichen Daten aus:")
-    st.dataframe(df)
+    st.dataframe(df.head())
     
     '''
     fig, ax = plt.subplots()

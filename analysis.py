@@ -49,6 +49,56 @@ def start():
     tokens_without_punctuation_and_stopwords = [i for i in tokens_without_punctuation if i not in stop_words]
     st.write("**Tokens ohne Interpunktion und Stopwords:**")
     st.write(', '.join(tokens_without_punctuation_and_stopwords))
+
+    st.header("Stemming und Lemmatizing")
+    st.write("Damit das Modell ähnliche Wörter wie 'Tisch' und 'Tische' als ein Wort erkennt und zählt, müssel alle Wörter im Text zu der Wurzelform gebracht werden.")
+    st.write("Stemming-Methode löscht die Endungen von Wörtern, um ihre Grundform, auch Stamm genannt, zu erhalten.")
+
+    def tokenized_and_stemmed(text):
+        stemmer = SnowballStemmer(language="german")
+        tokens = word_tokenize(text, language="german")
+        tokens_without_punctuation = [i for i in tokens if i not in string.punctuation]
+        tokens_without_punctuation_and_stopwords = [i for i in tokens_without_punctuation if i not in stop_words]
+        stemmed_tokens = [stemmer.stem(i) for i in tokens_without_punctuation_and_stopwords]
+        return stemmed_tokens
+        
+    st.write("**Stemmed Tokens:**")
+    st.write(', '.join(tokenized_and_stemmed(example)))
+
+    st.write("Weil mir das Ergebnis nicht sehr gefallen hat, habe ich weiter recherchiert und herausgefunden, dass Lemmatazing-Methode für die deutsche Sprache besser funktionieren sollte.")
+    st.write("Lemmatizing-Methode sucht nach dem Wort in einem bestimmten Wörterbuch, in dem gleich steht, zu welcher Stammform dieses Wort gebracht werden soll.")
+
+    def tokenized_and_lemmatized(text):
+        lemmatizer = WordNetLemmatizer()
+        tokens = nltk.word_tokenize(text, language='german')
+        tokens_without_punctuation = [i for i in tokens if i not in string.punctuation]
+        tokens_without_punctuation_and_stopwords = [i for i in tokens_without_punctuation if i not in stop_words]
+        lemmatized_tokes = [lemmatizer.lemmatize(i, 'v') for i in tokens_without_punctuation_and_stopwords]
+        return lemmatized_tokes
+    
+    st.write("**Mit NLTK Lemmatized Tokens:**")
+    st.write(', '.join(tokenized_and_lemmatized(example)))
+
+    st.write("Außer NLTK-Bibliothek, habe ich Spacy-Bibliothek gefunden.")
+
+    def tokenized_and_lemmatized_spacy(text):
+        nlp = spacy.load('de_core_news_sm')
+        tokens = nltk.word_tokenize(text, language='german')
+        tokens_without_punctuation = [i for i in tokens if i not in string.punctuation]
+        tokens_without_punctuation_and_stopwords = [i for i in tokens_without_punctuation if i not in stop_words]
+        tokenized_text = " ".join(tokens_without_punctuation_and_stopwords)
+        doc = nlp(tokenized_text)
+        lemmas = [token.lemma_ for token in doc]
+        return lemmas
+
+    st.write("**Mit Spacy Lemmatized Tokens:**")
+    st.write(', '.join(tokenized_and_lemmatized_spacy(example)))
+
+
+
+
+
+
     
     '''
     fig, ax = plt.subplots()

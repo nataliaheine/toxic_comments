@@ -27,7 +27,7 @@ def predict_comment(text):
     
     # OPER SAVED MODEL
     with open('model_toxic_comments.pkl', 'rb') as file:
-    model_pipeline = pickle.load(file)
+        model_pipeline = pickle.load(file)
     
     klasse = model_pipeline.predict([text])
     proba = model_pipeline.predict_proba([text])

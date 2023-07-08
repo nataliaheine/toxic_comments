@@ -3,14 +3,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-df = pd.read_csv("toxic_comments_de_unprocessed.csv")
-
 def start():
     st.title("Datenanalyse & Modellauswahl")
     st.info("Dataset findet man unter folgendem [Link](https://www.kaggle.com/datasets/shubheshswain/jigsaw-toxic-comment-classification-german).")
 
     st.header("So sehen die ursprunglichen Daten aus:")
+    df = pd.read_csv("toxic_comments_de_unprocessed.csv")
     st.dataframe(df.head(10))
 
     st.text("Das zukünftige Modell braucht nur 1 Label statt 6. Ich habe alles zu einem Label gebracht und zwar nach folgendem Prinzip: wenn ein Kommentar zumindest bei einem der Labels mit '1' markiert wurde, bekam er bei dem neuen Label auch ein '1'.  \n\nSomit wurden auch fast harmlose Kommentare als toxisch gelabelt. Dies könnte man ändern indem man bei Erstellung des neues Labels nicht alle der alten Labels beachtet, sondern z.B. nur die Features 'severe toxic', 'threat' und 'insult'") 

@@ -16,7 +16,7 @@ def start():
     st.header("So sah das neue DataFrame aus mit nur 1 Label und der gleichen Anzahl an Kommentaren jeder Klasse:")
     df["label"] = df[['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']].any(axis=1).astype(int)
     df = df.drop(['toxic', 'severe_toxic', 'obscene', 'threat', 'insult','identity_hate'], axis=1)
-    df = df[df["label"]==0].sample(n=15100, random_state=42).append(df[df["label"]==1]).reset_index(drop=True)
+    df = pd.concat([df[df["label"]==0].sample(n=15100, random_state=42), df[df["label"]==1]]).reset_index(drop=True)
     st.dataframe(df.head(10))
     
     '''

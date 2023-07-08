@@ -102,7 +102,7 @@ def start():
         return lemmas
 
     st.write("**Mit Spacy Lemmatized Tokens:**")
-    st.write(', '.join(tokenized_and_lemmatized_spacy(example)))
+    st.write(', '.join(['möglicherweise', 'rechtfertigen', 'Umleitung', 'Element', 'existieren', 'fiktiv', 'Element', 'müssen', 'Leute', 'nachgeben', 'neu', 'Element', 'erfinden', 'krumm', 'befinden', '20:53', '24.', 'November', '2004', 'UTC']))
 
 
 

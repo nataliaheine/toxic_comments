@@ -212,23 +212,23 @@ def start():
     mae_scores = [0.44, 0.47, 0.42, 0.32, 0.37, 0.36, 0.4, 0.41, 0.4, 0.38, 0.4, 0.41, 0.42, 0.4, 0.42, 0.43, 0.43, 0.43, 0.42, 0.41, 0.43, 0.44, 0.44, 0.44, 0.43, 0.44, 0.44, 0.44, 0.43, 0.44, 0.43, 0.44, 0.43]
     n_estimators_range = range(1, 100, 3)
     
-    plt.plot(n_estimators_range, mae_scores)
+    fig_1 = plt.plot(n_estimators_range, mae_scores)
     plt.xlabel('Zahl der Bäume')
     plt.ylabel('Anzahl der Fehler')
     plt.title('RandomForest - Optimale Zahl der Bäume')
-    st.pyplot(plt)
+    st.pyplot(fig_1)
 
     st.write("Eindeutig zu sehen, dass **10** die optimale Anzahl der Bäume ist")
 
     mae_scores_2 = [0.45, 0.43, 0.39, 0.38, 0.42, 0.4, 0.41, 0.43, 0.44, 0.37, 0.45, 0.44, 0.35, 0.38, 0.43, 0.43, 0.45, 0.42, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32]
     max_depth_range = range(1, 100, 3)
 
-    plt.plot(max_depth_range, mae_scores_2)
+    fig_2 = plt.plot(max_depth_range, mae_scores_2)
     plt.xlabel('Maximale Tiefe der Bäume')
     plt.xticks(range(1, 100, 6))
     plt.ylabel('Anzahl der Fehler')
     plt.title('RandomForest - Optimale maximale Tiefe der Bäume')
-    st.pyplot(plt)   
+    st.pyplot(fig_2)   
 
     st.write("Und die optimale Tiefe der Bäume liegt bei **55**")
 
@@ -236,25 +236,26 @@ def start():
 
     mae_scores_3 = [0.42, 0.35, 0.31, 0.3, 0.29, 0.27, 0.27, 0.27, 0.26, 0.26, 0.32, 0.27, 0.31, 0.31, 0.31, 0.26, 0.32, 0.32, 0.35, 0.34, 0.26, 0.25, 0.26, 0.25, 0.25, 0.25, 0.25, 0.26, 0.27, 0.26, 0.26, 0.26, 0.27]
     n_estimators_range_3 = range(1, 100, 3)
-    plt.plot(n_estimators_range_3, mae_scores_3)
+    
+    fig_3 = plt.plot(n_estimators_range_3, mae_scores_3)
     plt.axvline(x=28, color='red', linestyle='--')
     plt.xlabel('Zahl der Bäume')
     plt.xticks(range(0, 100, 5))
     plt.ylabel('Anzahl der Fehler')
     plt.title('GradientBoosting - Optimale Zahl der Bäume')
-    st.pyplot(plt)
+    st.pyplot(fig_3)
 
     st.write("Die optimale Zahl der Bäume liegt bei 28")
 
     mae_scores_4 = [0.45, 0.43, 0.39, 0.38, 0.42, 0.4, 0.41, 0.43, 0.44, 0.37, 0.45, 0.44, 0.35, 0.38, 0.43, 0.43, 0.45, 0.42, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32]
     max_depth_range_4 = range(1, 100, 3)
 
-    plt.plot(max_depth_range_4, mae_scores_4)
+    fig_4 = plt.plot(max_depth_range_4, mae_scores_4)
     plt.xlabel('Maximale Tiefe der Bäume')
     plt.xticks(range(1, 100, 6))
     plt.ylabel('Anzahl der Fehler')
     plt.title('GradientBoosting - Optimale maximale Tiefe der Bäume')
-    st.pyplot(plt)
+    st.pyplot(fig_4)
 
     st.write("Wenn der mae-Wert für das GradientBoosting-Modell bei einer Tiefe von 1 erstaunlich niedrig ist im Vergleich zu den anderen Tiefe-Werten, kann dies auf Overfitting hinweisen. Aber ich probiere das Modell trotzdem aus und schaue, welche Resultate sie im Vergleich zu den anderen zeigt und als Tiefe der Bäume nehme ich dann tatsächlich 1.")
 

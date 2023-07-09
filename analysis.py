@@ -220,10 +220,10 @@ def start():
 
     st.write("Eindeutig zu sehen, dass **10** die optimale Anzahl der Bäume ist")
 
-    mae_scores = [0.45, 0.43, 0.39, 0.38, 0.42, 0.4, 0.41, 0.43, 0.44, 0.37, 0.45, 0.44, 0.35, 0.38, 0.43, 0.43, 0.45, 0.42, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32]
+    mae_scores_2 = [0.45, 0.43, 0.39, 0.38, 0.42, 0.4, 0.41, 0.43, 0.44, 0.37, 0.45, 0.44, 0.35, 0.38, 0.43, 0.43, 0.45, 0.42, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32]
     max_depth_range = range(1, 100, 3)
 
-    plt.plot(max_depth_range, mae_scores)
+    plt.plot(max_depth_range, mae_scores_2)
     plt.xlabel('Maximale Tiefe der Bäume')
     plt.xticks(range(1, 100, 6))
     plt.ylabel('Anzahl der Fehler')
@@ -234,9 +234,9 @@ def start():
 
     st.write("Für **Gradient Boosting** suche ich nicht nur die besten Anzahl und Tiefe der Bäume, sondern auch die Lernrate")
 
-    mae_scores = [0.42, 0.35, 0.31, 0.3, 0.29, 0.27, 0.27, 0.27, 0.26, 0.26, 0.32, 0.27, 0.31, 0.31, 0.31, 0.26, 0.32, 0.32, 0.35, 0.34, 0.26, 0.25, 0.26, 0.25, 0.25, 0.25, 0.25, 0.26, 0.27, 0.26, 0.26, 0.26, 0.27]
-    n_estimators_range = range(1, 100, 3)
-    plt.plot(n_estimators_range, mae_scores)
+    mae_scores_3 = [0.42, 0.35, 0.31, 0.3, 0.29, 0.27, 0.27, 0.27, 0.26, 0.26, 0.32, 0.27, 0.31, 0.31, 0.31, 0.26, 0.32, 0.32, 0.35, 0.34, 0.26, 0.25, 0.26, 0.25, 0.25, 0.25, 0.25, 0.26, 0.27, 0.26, 0.26, 0.26, 0.27]
+    n_estimators_range_3 = range(1, 100, 3)
+    plt.plot(n_estimators_range_3, mae_scores_3)
     plt.axvline(x=28, color='red', linestyle='--')
     plt.xlabel('Zahl der Bäume')
     plt.xticks(range(0, 100, 5))
@@ -246,10 +246,10 @@ def start():
 
     st.write("Die optimale Zahl der Bäume liegt bei 28")
 
-    mae_scores = [0.45, 0.43, 0.39, 0.38, 0.42, 0.4, 0.41, 0.43, 0.44, 0.37, 0.45, 0.44, 0.35, 0.38, 0.43, 0.43, 0.45, 0.42, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32]
-    max_depth_range = range(1, 100, 3)
+    mae_scores_4 = [0.45, 0.43, 0.39, 0.38, 0.42, 0.4, 0.41, 0.43, 0.44, 0.37, 0.45, 0.44, 0.35, 0.38, 0.43, 0.43, 0.45, 0.42, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32]
+    max_depth_range_4 = range(1, 100, 3)
 
-    plt.plot(max_depth_range, mae_scores)
+    plt.plot(max_depth_range_4, mae_scores_4)
     plt.xlabel('Maximale Tiefe der Bäume')
     plt.xticks(range(1, 100, 6))
     plt.ylabel('Anzahl der Fehler')
@@ -353,7 +353,7 @@ def start():
     st.info("Pipeline Modell wird benutzt, um dem Modell einen nicht vectorisierten Text geben zu können. Ich benutze Pipeline aus der Sklearn-Bibliothek. Dabei verwende ich den vorher ausgewählten Vectorizer und Modell mit den besten Gewichten und von mir geschriebene Funktion 'tokenized_and_stemmed'")
     st.code("model_pipeline = Pipeline([('vectorizer', CountVectorizer(tokenizer=lambda x: tokenized_and_stemmed(x), lowercase=False)),('model', LogisticRegression(class_weight={0: 1, 1: 3}))])")
 
-    st.write("Nach dem Testen speichere in das Modell in eine Datei, um sie in dieser Visualisierung auf der Seite 'Modell' aus der Datei zu holen und zu benutzen")
+    st.info("Nach dem Testen speichere in das Modell in eine Datei, um sie in dieser Visualisierung auf der Seite 'Modell' aus der Datei zu holen und zu benutzen")
     st.code("with open('model_toxic_comments.pkl', 'wb') as file: pickle.dump(model_pipeline, file)")
     
 

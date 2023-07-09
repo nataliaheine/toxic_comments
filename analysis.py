@@ -351,11 +351,9 @@ def start():
 
     st.header("Pipeline Modell")
     st.info("Pipeline Modell wird benutzt, um dem Modell einen nicht vectorisierten Text geben zu können. Ich benutze Pipeline aus der Sklearn-Bibliothek. Dabei verwende ich den vorher ausgewählten Vectorizer und Modell mit den besten Gewichten und von mir geschriebene Funktion 'tokenized_and_stemmed'")
-    st.code("model_pipeline = Pipeline([('vectorizer', CountVectorizer(tokenizer=lambda x: tokenized_and_stemmed(x), lowercase=False)),
-                                        ('model', LogisticRegression(class_weight={0: 1, 1: 3}))])")
+    st.code("model_pipeline = Pipeline([('vectorizer', CountVectorizer(tokenizer=lambda x: tokenized_and_stemmed(x), lowercase=False)),('model', LogisticRegression(class_weight={0: 1, 1: 3}))])")
 
     st.write("Nach dem Testen speichere in das Modell in eine Datei, um sie in dieser Visualisierung auf der Seite 'Modell' aus der Datei zu holen und zu benutzen")
-    st.code("with open('model_toxic_comments.pkl', 'wb') as file:
-                pickle.dump(model_pipeline, file)")
+    st.code("with open('model_toxic_comments.pkl', 'wb') as file: pickle.dump(model_pipeline, file)")
     
 

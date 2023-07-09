@@ -149,7 +149,7 @@ def start():
 
     st.header("Modelle")
     st.info("**LogisticRegression, NaiveBayes, RandomForest, GradienBoosting und SVM**")
-    st.write("Zuerst muss ich die besten Parameter für jedes Modell finden.")
+    st.header("Zuerst muss ich die besten Parameter für jedes Modell finden.")
     st.write("Für **Logistic Regression** suche ich die besten Gewichte der Klassen")
 
     st.write("**Gewicht: {0: 1, 1: 1}:**")
@@ -218,15 +218,144 @@ def start():
     plt.title('RandomForest - Optimale Zahl der Bäume')
     st.pyplot(plt)
 
-    
-    '''
-    fig, ax = plt.subplots()
-    for i, (key, value) in enumerate(all_mean_prices_for_brands_and_mil.items()):
-        ax.plot(range(0, 300000, 1000), value, color=colors[i], marker='.', label=key)
+    st.write("Eindeutig zu sehen, dass **10** die optimale Anzahl der Bäume ist")
 
-    ax.set_title("Durchschnittspreise der Marken nach Kilometerzahl")
-    ax.set_xlabel("Kilometerzahl")
-    ax.set_ylabel("Durchschnittspreis")
-    ax.legend()
-    st.pyplot(fig)
-    '''
+    mae_scores = [0.45, 0.43, 0.39, 0.38, 0.42, 0.4, 0.41, 0.43, 0.44, 0.37, 0.45, 0.44, 0.35, 0.38, 0.43, 0.43, 0.45, 0.42, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32]
+    max_depth_range = range(1, 100, 3)
+
+    plt.plot(max_depth_range, mae_scores)
+    plt.xlabel('Maximale Tiefe der Bäume')
+    plt.xticks(range(1, 100, 6))
+    plt.ylabel('Anzahl der Fehler')
+    plt.title('RandomForest - Optimale maximale Tiefe der Bäume')
+    st.pyplot(plt)   
+
+    st.write("Und die optimale Tiefe der Bäume liegt bei **55**")
+
+    st.write("Für **Gradient Boosting** suche ich nicht nur die besten Anzahl und Tiefe der Bäume, sondern auch die Lernrate")
+
+    mae_scores = [0.42, 0.35, 0.31, 0.3, 0.29, 0.27, 0.27, 0.27, 0.26, 0.26, 0.32, 0.27, 0.31, 0.31, 0.31, 0.26, 0.32, 0.32, 0.35, 0.34, 0.26, 0.25, 0.26, 0.25, 0.25, 0.25, 0.25, 0.26, 0.27, 0.26, 0.26, 0.26, 0.27]
+    n_estimators_range = range(1, 100, 3)
+    plt.plot(n_estimators_range, mae_scores)
+    plt.axvline(x=28, color='red', linestyle='--')
+    plt.xlabel('Zahl der Bäume')
+    plt.xticks(range(0, 100, 5))
+    plt.ylabel('Anzahl der Fehler')
+    plt.title('GradientBoosting - Optimale Zahl der Bäume')
+    st.pyplot(plt)
+
+    st.write("Die optimale Zahl der Bäume liegt bei 28")
+
+    mae_scores = [0.45, 0.43, 0.39, 0.38, 0.42, 0.4, 0.41, 0.43, 0.44, 0.37, 0.45, 0.44, 0.35, 0.38, 0.43, 0.43, 0.45, 0.42, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32, 0.32]
+    max_depth_range = range(1, 100, 3)
+
+    plt.plot(max_depth_range, mae_scores)
+    plt.xlabel('Maximale Tiefe der Bäume')
+    plt.xticks(range(1, 100, 6))
+    plt.ylabel('Anzahl der Fehler')
+    plt.title('GradientBoosting - Optimale maximale Tiefe der Bäume')
+    st.pyplot(plt)
+
+    st.write("Wenn der mae-Wert für das GradientBoosting-Modell bei einer Tiefe von 1 erstaunlich niedrig ist im Vergleich zu den anderen Tiefe-Werten, kann dies auf Overfitting hinweisen. Aber ich probiere das Modell trotzdem aus und schaue, welche Resultate sie im Vergleich zu den anderen zeigt und als Tiefe der Bäume nehme ich dann tatsächlich 1.")
+
+    st.write("Die Lernrate finde ich mit GridSearch und sie liegt bei **0.01**")
+
+    st.header("Nun verwende ich die gefundenen Parameter und vergleiche die Modelle untereinander.")
+
+    st.write("**LogistiRegression:**")
+    clas_report = {'precision': {'0': 0.89,
+                                 '1': 0.86,
+                                 'accuracy': ""},
+                   'recall': {'0': 0.85,
+                              '1': 0.90,
+                              'accuracy': ""},
+                   'f1-score': {'0': 0.87,
+                                '1': 0.88,
+                                'accuracy': 0.87},
+                   'support': {'0': 5036, 
+                               '1': 4926,
+                               'accuracy': ""}}
+    
+    df_cr = pd.DataFrame(clas_report)
+    st.dataframe(df_cr)
+
+    st.write("**NaiveBayes:**")
+    clas_report = {'precision': {'0': 0.85,
+                                 '1': 0.88,
+                                 'accuracy': ""},
+                   'recall': {'0': 0.88,
+                              '1': 0.84,
+                              'accuracy': ""},
+                   'f1-score': {'0': 0.87,
+                                '1': 0.86,
+                                'accuracy': 0.86},
+                   'support': {'0': 5036, 
+                               '1': 4926,
+                               'accuracy': ""}}
+    
+    df_cr = pd.DataFrame(clas_report)
+    st.dataframe(df_cr)
+
+    st.write("**RandomForest:**")
+    clas_report = {'precision': {'0': 0.80,
+                                 '1': 0.76,
+                                 'accuracy': ""},
+                   'recall': {'0': 0.75,
+                              '1': 0.81,
+                              'accuracy': ""},
+                   'f1-score': {'0': 0.77,
+                                '1': 0.78,
+                                'accuracy': 0.77},
+                   'support': {'0': 5036, 
+                               '1': 4926,
+                               'accuracy': ""}}
+    
+    df_cr = pd.DataFrame(clas_report)
+    st.dataframe(df_cr)
+
+    st.write("**GradientBoosting:**")
+    clas_report = {'precision': {'0': 0.56,
+                                 '1': 0.98,
+                                 'accuracy': ""},
+                   'recall': {'0': 1.00,
+                              '1': 0.21,
+                              'accuracy': ""},
+                   'f1-score': {'0': 0.72,
+                                '1': 0.35,
+                                'accuracy': 0.61},
+                   'support': {'0': 5036, 
+                               '1': 4926,
+                               'accuracy': ""}}
+    
+    df_cr = pd.DataFrame(clas_report)
+    st.dataframe(df_cr)
+
+    st.write("**SupportVector:**")
+    clas_report = {'precision': {'0': 0.84,
+                                 '1': 0.91,
+                                 'accuracy': ""},
+                   'recall': {'0': 0.92,
+                              '1': 0.82,
+                              'accuracy': ""},
+                   'f1-score': {'0': 0.88,
+                                '1': 0.86,
+                                'accuracy': 0.87},
+                   'support': {'0': 5036, 
+                               '1': 4926,
+                               'accuracy': ""}}
+    
+    df_cr = pd.DataFrame(clas_report)
+    st.dataframe(df_cr)
+
+    st.write("**Logistic Regression hat sich am besten gezeigt**")
+
+    st.header("Pipeline Modell")
+    st.info("Pipeline Modell wird benutzt, um dem Modell einen nicht vectorisierten Text geben zu können. Ich benutze Pipeline aus der Sklearn-Bibliothek. Dabei verwende ich den vorher ausgewählten Vectorizer und Modell mit den besten Gewichten und von mir geschriebene Funktion 'tokenized_and_stemmed'")
+    st.code("model_pipeline = Pipeline([("vectorizer", CountVectorizer(tokenizer=lambda x: tokenized_and_stemmed(x), lowercase=False)),
+                                        ("model", LogisticRegression(class_weight={0: 1, 1: 3}))])")
+
+    st.write("Nach dem Testen speichere in das Modell in eine Datei, um sie in dieser Visualisierung auf der Seite 'Modell' aus der Datei zu holen und zu benutzen")
+    st.code("with open('model_toxic_comments.pkl', 'wb') as file:
+                pickle.dump(model_pipeline, file)")
+    
+

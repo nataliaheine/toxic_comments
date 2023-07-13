@@ -1,7 +1,7 @@
 import streamlit as st
 
 def start():
-    st.title("Projekt Toxic Comments")
+    st.title(“Toxic Comments Classification”)
 
     st.success("Für dieses Projekt habe ich ein Dataset mit gelabelten Kommentaren auf Deutsch gefunden.  \n\nDas Dataset findet man unter folgendem [Link](https://www.kaggle.com/datasets/shubheshswain/jigsaw-toxic-comment-classification-german).")
             
